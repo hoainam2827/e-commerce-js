@@ -1,0 +1,27 @@
+{
+  "name": "OE44-FE-PR1-Nam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoainam2827/OE44-FE-PR1-Nam.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoainam2827/OE44-FE-PR1-Nam/issues"
+  },
+  "homepage": "https://github.com/hoainam2827/OE44-FE-PR1-Nam#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.14",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.1.0"
+  }
+}

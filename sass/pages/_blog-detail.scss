@@ -1,0 +1,288 @@
+#blog-detail{
+    .title{
+        background: url(../assets/img/titleleft-dark.png) no-repeat left bottom;
+    }
+
+    .blog-detail{
+        @include respond(tablet, down){
+            flex-direction: column-reverse;
+        }
+
+        .blog-bar{
+            .subtitle{
+                font-size: 1rem !important;
+                font-size: 400px;
+                padding-bottom: 0.5rem;
+                text-transform: uppercase;
+            }
+
+            .blog-new{
+                .blog-new-item{
+                    padding-bottom: 1.5rem;
+
+                    .blog-img{
+                        display: block;
+                        height: 60px;
+                        overflow: hidden;
+                        position: relative;
+                        width: 100%;
+
+                        &::after{
+                            background-color: rgba(255, 255, 255, 0.5);
+                            content: '';
+                            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                            left: 0;
+                            height: 101%;
+                            opacity: 0;
+                            position: absolute;
+                            top: -1px;
+                            transition: clip-path 0.3s ease-in, opacity 0.3s linear,z-index 0.7s;
+                            width: 101%;
+                            z-index: -1;
+                        }
+            
+                        &:hover::after{
+                            background-color: rgba(255, 255, 255, 0.5);
+                            content: '';
+                            clip-path: polygon(60% 40%, 100% 0, 100% 100%, -0.5% 100%);
+                            opacity: 1;
+                            position: absolute;
+                            transition: clip-path 0.3s ease-in;
+                            z-index: 1;
+                        }
+
+                        i{
+                            background-color: $white;
+                            border-radius: 50%;
+                            color: $dark-gray;
+                            font-size: 12px;
+                            left: 0%;
+                            opacity: 0;
+                            position: absolute;
+                            padding: 0.3rem;
+                            top: 0%;
+                            transition: all 0.3s ease-in;
+                            z-index: 100;
+            
+                            &:hover{
+                                background-color: $primary-color;
+                            }
+                        }
+            
+                        &:hover{
+                            i{
+                                opacity: 1;
+                                transition: all 0.3s ease-in;
+                                @include tranformCenter('both');
+                            }
+                        }
+                    }
+
+                    a{
+                        color: $black;
+                        display: block;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                        text-transform: uppercase;
+
+                        &:hover{
+                            color: $primary-color;
+                            transition: all 0.3s ease-in;
+                        }
+                    }
+
+                    span{
+                        color: $dark-gray;
+                        font-size: 0.8rem;
+
+                        &::before{
+                            padding-right: 0.5rem;
+                        }
+                    }
+                }
+            }
+
+            .blog-tag{
+                .tag-link{
+                    border: 1px solid $gray;
+                    border-radius: 5px;
+                    color: $dark-gray;
+                    display: inline-block;
+                    margin: 5px 15px 5px 0;
+                    padding: 3px 6px;
+                }
+
+                .active{
+                    background-color: $primary-color;
+                    color: $white;
+                }
+            }
+
+            .blog-video{
+                padding: 1rem 0;
+            }
+        }
+
+        .title-blog{
+            color: $black;
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            padding-top: 0.9rem;
+            text-transform: uppercase;
+            transition: all 0.2s;
+
+            &:hover{
+                color: $primary-color;
+                transition: all 0.2s;
+            }
+        }
+
+        .blog-detail-content{
+            .blog-text{
+                .info-blog{
+                    color: $dark-gray;
+                    font-size: 0.9rem;
+                    margin: 0.5rem 0;
+                }
+
+                .content-blog{
+                    color: $black;
+                    font-size: 0.9rem;
+                    font-style: italic;
+                    margin-bottom: 0.3rem;
+                    @include text_ellipsis(4);
+                }
+
+                .feedback{
+                    padding-top: 1rem;
+
+                    .input-group{
+                        padding: 1rem 0;
+
+                        label{
+                            font-style: italic;
+                            width: 80px;
+
+                            span{
+                                color: $red;
+                                padding-left: 3px;
+                            }
+                        }
+
+                        input,
+                        textarea{
+                            border: 1px solid $gray;
+                            outline: none;
+                            padding: 0 10px;
+                            width: calc(100% - 80px);
+                        }
+                    }
+
+                    button{
+                        border: none;
+                        float: right;
+                        margin-bottom: 2rem;
+                        outline: none;
+                    }
+                }
+
+                .blog-comment{
+                    padding: 3rem 0 0;
+
+                    h2{
+                        font-size: 1rem;
+                        font-weight: 500;
+                        padding-bottom: 1rem;
+                        text-transform: uppercase;
+                    }
+
+                    .comment-item{
+                        display: flex;
+                        background-color: $gray;
+                        border-radius: 5px;
+                        justify-content: space-between;
+                        padding: 1rem;
+
+                        .comment-info{
+                            align-items: center;
+                            color: $dark-gray;
+                            display: flex;
+                            font-style: italic;
+
+                            .cmt-name{
+                                border-right: 1px solid $dark-gray;
+                                padding-right: 3rem;
+                            }
+
+                            .cmt-name, .cmt-time{
+                                font-size: 0.9rem;
+                                font-weight: 400;
+                                margin-bottom: 0;
+                            }
+
+                            .cmt-time{
+                                padding-left: 1rem;
+                            }
+                        }
+
+                        .btn-blog{
+                            background-color: $gray;
+                            border: none;
+                            border-bottom: 1px solid $dark-gray;
+                            color: $dark-gray;
+                            font-size: 1rem;
+                            font-style: italic;
+                            font-weight: 400;
+                            outline: none;
+
+                            &:hover{
+                                border-bottom: 1px solid $primary-color;
+                                color: $primary-color;
+                                transition: all 0.3s;
+                            }
+                        }
+                    }
+
+                    .comment-content{
+                        color: $dark-gray;
+                        font-size: 0.9rem;
+                        margin: 1rem 0.5rem;
+                    }
+                }
+
+                ul{
+                    float: right;
+                    margin: 3rem 0 5rem;
+
+                    li{
+                        margin-right: 10px;
+
+                        .page-prev{
+                            background-color: $black;
+                            color: $white;
+                        }
+
+                        a{
+                            border: 1px solid $dark-gray;
+                            color: $black;
+                            padding: 0.5rem 0.8rem;
+
+                            &:hover{
+                                background-color: $dark-gray;
+                                color: $white;
+                            }
+
+                        }
+                    }
+
+                    .active{
+                        background-color: $dark-gray;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}

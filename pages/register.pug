@@ -1,0 +1,75 @@
+extends ./base/base.pug
+
+block variables
+    - const title = "Register";
+    - const current = "/register.html";
+
+    include ./variables/breadcrumb_var.pug
+    include ./variables/blog_var.pug
+    include ./components/breadcrumb.pug
+
+block content
+    +breadcrumb(register_breadcrumb, current)
+    section#login.register
+        .container
+            .login-header.d-flex
+                h1.title Đăng ký
+                a.btn-main(href="/login.html") Đăng nhập
+            form.login-form#form-1
+                h3 Thông tin cá nhân
+                .input-area
+                    .form-group
+                        label(for="name") Họ &amp; tên đệm
+                            span *
+                        input#name(type="text")
+                    span.form-message
+                .input-area
+                    .form-group
+                        label(for="lastname") Tên
+                            span *
+                        input#lastname(type="text")
+                    span.form-message
+                .input-area
+                    .form-group
+                        label(for="email") Email
+                            span *
+                        input#email(type="email")
+                    span.form-message
+                .form-options
+                    .form-group
+                        .form-check
+                            label(for="save-pass") Đăng ký nhận bản tin
+                                input#save-pass(type="checkbox")
+                h3 Thông tin đăng nhập
+                .input-area
+                    .form-group
+                        label(for="password") Mật khẩu
+                            span *
+                        input#password(type="password")
+                    span.form-message
+                .input-area
+                    .form-group
+                        label(for="re-password") Xác nhận mật khẩu
+                            span *
+                        input#re-password(type="password")
+                    span.form-message
+                .control-group
+                    button.btn-main gửi
+                    a(href="/index.html").btn-main Quay lại
+block scripts
+    script(src='js/validator.js')
+    script.
+        Validator({
+            form: '#form-1',
+            errorSelector: '.form-message',
+            formGroupSelector: '.input-area',
+            rules: [
+                Validator.isRequired('#name'),
+                Validator.isRequired('#lastname'),
+                Validator.isEmail('#email'),
+                Validator.minlength('#password', 8),
+                Validator.isConfirmed('#re-password', function(){
+                    return document.querySelector('#form-1 #password').value;
+                }, "Mật khẩu nhập lại không chính xác"),
+            ]
+        });

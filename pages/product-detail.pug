@@ -1,0 +1,97 @@
+extends ./base/base.pug
+
+block variables 
+    - const title = "Chi tiết sản phẩm";
+    - const current = "/product-detail.html";
+
+    include ./variables/product_var.pug
+    include ./components/breadcrumb.pug
+    include ./variables/index_variables.pug
+    include ./components/carousel.pug
+block content
+    +breadcrumb(product_detail_breadcrumb, current)
+    section#product-detail
+        .container
+            .row
+                .detail-top.d-flex.flex-row
+                    .col-md-7.col-sm-12
+                        .product-img
+                            .row
+                                .col-2
+                                .col-10
+                                    .main-img
+                                        img(src="../assets/img/7.jpg" alt="")
+                    .col-md-5.col-sm-12
+                        .product-info
+                            h2.title RƯỢU NHO NĂM 1987
+                            p.price 330.000
+                                span đ
+                            .star.d-flex
+                                i.fas.fa-star
+                                i.fas.fa-star
+                                i.fas.fa-star
+                                i.fas.fa-star-half-alt
+                                i.far.fa-star
+                                span 1 Review(S) | Add Your Review
+                            h3 Màu sắc
+                            .square.d-flex
+                                i.fas.fa-square-full.yellow
+                                i.fas.fa-square-full.black
+                                i.fas.fa-square-full.red
+                            h3 Kích cỡ
+                            select#size(name='size')
+                                option(value='big') Loại to
+                                option(value='medium') Trung bình
+                                option(value='small') Loại nhỏ
+                            h3 Số lượng
+                            .quantily.d-flex
+                                input(type="number" value="1").choose-number
+                                a(href="#").btn-main ADD TO CART
+                            .reaction.d-flex
+                                .action
+                                    a(href="#") 
+                                        i.fas.fa-heart 
+                                        span Yêu Thích
+                                .action
+                                    a(href="#") 
+                                        i.fas.fa-signal
+                                        span So Sánh
+                                .action
+                                    a(href="#") 
+                                        i.fas.fa-envelope
+                                        span Email
+                            h3 Mô tả
+                            p Một hợp chất có trong rượu vang được gọi là resveratro có khả năng làm tăng tối đa tuổi thọ. Resveratro còn có khả năng ngăn chặn mật độ oxy hóa của protein béo.
+            .row
+                .detail-desc
+                    .col-lg-8
+                        .group-desc
+                            .group-desc-item
+                                input(name="checkbox-group" checked type="radio" id="checkbox1").checkbox 
+                                label(for="checkbox1") Đặc điểm nổi bật
+                                .content 
+                                    p
+                                        | Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long
+                                    p Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long
+                                    p Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long
+                            .group-desc-item
+                                input(name="checkbox-group" type="radio" id="checkbox2").checkbox 
+                                label(for="checkbox2") Thông tin sản phẩm
+                                .content 
+                                    p Một hợp chất có trong rượu vang gọi là resverato có khả năng làm tăng tối đa tuổi thọ. Resverato còn có khả năng ngăn chặn mật độ oxy hóa của protein béo.
+                                    p Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long
+                                    p Vang nổ Thăng Long có vị của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long
+                            .group-desc-item
+                                input(name="checkbox-group" type="radio" id="checkbox3").checkbox 
+                                label(for="checkbox3") Đánh giá
+                                .content 
+                                    p Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long
+                                    p Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long
+                                    p Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long
+                    .col-lg-4
+                        img(src="../assets/img/gallery-2.jpg" alt="image") 
+            .row.mt-3.mb-5
+                .col-12
+                    .text-center
+                        h2.title Sản phẩm liên quan
+                    +new_product(new_product)

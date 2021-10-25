@@ -1,0 +1,18 @@
+.btn-main{
+    border: none;
+    background-color: $black;
+    color: $white !important;
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    outline: none;
+    padding: 6px 14px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+
+    &:hover{
+        background-color: $primary-color;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+}

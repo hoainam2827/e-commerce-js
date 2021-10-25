@@ -1,0 +1,45 @@
+include ../variables/header_variables.pug
+include ../components/carousel.pug
+
+//- header
+header.header
+    .header-top
+        div.container.d-flex
+            ul.header-top-left
+                each item in header_top_items
+                    - const { title, link } = item
+                    li.header-top-item
+                        a(href=`.${link}`)=title
+            div.header-top-right
+                div.input-area
+                    input(type='text', placeholder='Tìm kiếm ở đây...')
+                    span.fas.fa-search
+        - if (current === "/")
+            section.slider
+                +carousel-header()
+    .header-main
+        .container
+            nav.navbar.navbar-expand-lg.d-flex
+                .logo
+                    img(src="../assets/img/logo.png", alt="logo")
+                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav')
+                    span.fas.fa-bars
+                div#navbarNav.collapse.navbar-collapse
+                    ul.ml-auto.sub_menu.navbar-nav
+                        each sub_menu_item in header_main_nav
+                            - const { title, link, sub_nav } = sub_menu_item
+                            if sub_nav
+                                li.sub_menu_content.active
+                                    a.main_items(href=link)=title
+                                    ul.mega_menu_list
+                                        each mega_menu_items in mega_items
+                                            - const {mega_title, link, list_items} = mega_menu_items;
+                                                li.active
+                                                    h3=mega_title
+                                                    each mega_list_item in list_items
+                                                        a(href="#")=mega_list_item
+                                        .sub_img
+                                            img(src="../assets/img/gallery-2.jpg" alt="a")
+                            else
+                                li.active
+                                    a(href=link, class=`${current === link ? 'active' : ''}`).main_items=title

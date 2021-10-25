@@ -1,0 +1,78 @@
+mixin carousel-header()
+    div.carousel.slide(id="carousel-header", data-ride="carousel", data-interval="5000")
+        ol.carousel-indicators
+            li.active(data-target='#carousel-header' data-slide-to='0')
+            li(data-target='#carousel-header' data-slide-to='1')
+            li(data-target='#carousel-header' data-slide-to='2')
+        .carousel-inner
+            each item in header_carousel_items
+                if item.img === header_carousel_items[0].img
+                    .carousel-item.active
+                        img(src="../assets/img/" + item.img, alt="image")
+                        .carousel__content
+                            h2.carousel-title=item.title
+                            span.carousel-year="Since" + item.year
+                            span.carousel-subtitle=item.subtitle
+                else
+                    .carousel-item
+                        img(src="../assets/img/" + item.img, alt="image")
+                        .carousel__content
+                            h2.carousel-title=item.title
+                            span.carousel-year="Since" + item.year
+                            span.carousel-subtitle=item.subtitle
+        a.carousel-control-prev(href='#carousel-header' role='button' data-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.sr-only Previous
+        a.carousel-control-next(href='#carousel-header' role='button' data-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.sr-only Next
+
+mixin new_product(array)
+    .owl-carousel.owl-theme
+        each new_product_item in array
+            - const {img, name, price, old_price} = new_product_item;
+            .new_product_item.text-center
+                .new_product_img
+                    img(src="../assets/img/" + img, alt="Image")
+                    div.product-action
+                        div.product-action-item
+                            span.fas.fa-heart
+                            | Yêu thích
+                        div.product-action-item
+                            span.fas.fa-signal
+                            | So sánh
+                        div.product-action-item
+                            span.fas.fa-compress-alt
+                a(href="/product-detail.html") 
+                    h3.new_product_name= name 
+                .d-flex.text-center.align-items-center.justify-content-center
+                    h4.price= price
+                        span đ
+                    if new_product_item.old_price > new_product_item.price
+                        span -
+                        h4.old-price= old_price
+                            span đ
+                    else
+
+                a(href="#").btn-main Add to cart
+
+mixin carousel-customer()
+    div.carousel.slide(id="carousel-customer", data-ride="carousel", data-interval="5000")
+        ol.carousel-indicators
+            li.active(data-target='#carousel-customer' data-slide-to='0')
+            li(data-target='#carousel-customer' data-slide-to='1')
+            li(data-target='#carousel-customer' data-slide-to='2')
+        .carousel-inner
+            each item in index_carousel_customer
+                if item.img === index_carousel_customer[0].img
+                    .carousel-item.active
+                        img(src="../assets/img/" + item.img, alt="image")
+                        .carousel__content
+                            h3.name= item.name
+                            h3.job= item.job
+                else
+                    .carousel-item
+                        img(src="../assets/img/" + item.img, alt="image")
+                        .carousel__content
+                            h3.name= item.name
+                            h3.job= item.job

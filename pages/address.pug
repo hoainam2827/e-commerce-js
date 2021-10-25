@@ -1,0 +1,80 @@
+extends ./base/base.pug
+
+block variables
+    - const title = "Địa chỉ";
+    - const current = "/address.html";
+
+    include ./variables/breadcrumb_var.pug
+    include ./variables/address_var.pug
+    include ./components/breadcrumb.pug
+    include ./components/mixin.pug
+
+block content
+    +breadcrumb(address_breadcrumb, current)
+    section#address
+        .container
+            h1.title Địa chỉ
+            .row.flex-wrap-reverse
+                .col-lg-6
+                    h3 Địa chỉ của bạn
+                    each item in address_list
+                        - const { firstName, lastName, company, address, city, country, postal, phone } = item
+                        .address-customer
+                            +address("firstName", "Tên:", firstName)
+                            +address("lastName", "Họ & tên đệm", lastName)
+                            +address("Company", "Công ty:", company)
+                            +address("address", "Địa chỉ:", address)
+                            +address("city", "Thành phố:", city)
+                            +address("country", "Quốc gia:", country)
+                            +address("postal", "Quốc tịch:", postal)
+                            +address("phone", "Phone:", phone)
+                            .row.justify-content-end
+                                .col-sm-9
+                                    .form-check
+                                        input#default(type='checkbox')
+                                        label(for='default') Đặt làm địa chỉ mặc định ?
+                                    a(href="").btn-main.btn-address Chỉnh sửa địa chỉ 
+                                    a(href="").btn-main Xóa
+                        .address-customer
+                            +address("", "Tên:", firstName)
+                            +address("", "Họ & tên đệm: ", lastName)
+                            +address("", "Công ty:", company)
+                            +address("", "Địa chỉ:", address)
+                            +address("", "Thành phố:", city)
+                            +address("", "Quốc gia:", country)
+                            +address("", "Quốc tịch:", postal)
+                            +address("", "Phone:", phone)
+                            .text-right
+                                a(href="#") Chỉnh sửa địa chỉ 
+                        .address-customer
+                            +address("", "Tên:", firstName)
+                            +address("", "Họ & tên đệm:", lastName)
+                            +address("", "Công ty:", company)
+                            +address("", "Địa chỉ:", address)
+                            +address("", "Thành phố:", city)
+                            +address("", "Quốc gia:", country)
+                            +address("", "Quốc tịch:", postal)
+                            +address("", "Phone:", phone)
+                            .text-right
+                                a(href="#") Chỉnh sửa địa chỉ 
+                .col-lg-6
+                    h3.text-left
+                        a(href="#") Thêm địa chỉ
+                    each item in address_list
+                        - const { firstName, lastName, company, address, city, country, postal, phone } = item
+                        .address-customer
+                            +address("firstName", "Tên:", firstName)
+                            +address("lastName", "Họ & tên đệm: ", lastName)
+                            +address("Company", "Công ty:", company)
+                            +address("address", "Địa chỉ:", address)
+                            +address("city", "Thành phố:", city)
+                            +address("country", "Quốc gia:", country)
+                            +address("postal", "Quốc tịch:", postal)
+                            +address("phone", "Phone:", phone)
+                            .row.justify-content-end
+                                .col-sm-9
+                                    .form-check
+                                        input#default(type='checkbox')
+                                        label(for='default') Đặt làm địa chỉ mặc định ?
+                                    a(href="").btn-main.btn-address Chỉnh sửa địa chỉ 
+                                    a(href="").btn-main Xóa

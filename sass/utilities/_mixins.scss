@@ -1,0 +1,77 @@
+@mixin tranformCenter($direction: "left"){
+    position: absolute;
+    @if $direction == "left"{
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
+    }
+
+    @if $direction == "top"{
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+    }
+
+    @if $direction == "both"{
+        top: 50%;
+        left: 50%;
+        -webkit-transform:  translate(-50%, -50%);
+            -ms-transform:  translate(-50%, -50%);
+                transform:  translate(-50%, -50%);
+    }
+}
+
+
+@mixin respond($breakpoint, $direction:down) {
+    @if map-has-key($breakpoints,  $breakpoint) {
+        $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+        @if $direction == up {
+            @media (min-width: $breakpoint-value) {
+                @content;
+            }
+        }
+
+        @else if $direction == down {
+            @media (max-width: $breakpoint-value) {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin between-sizes ($lower, $upper) {
+    @if map-has-key($breakpoints, $lower ) and map-has-key($breakpoints, $upper) {
+        $lower-breakpoint: map-get($breakpoints, $lower);
+        $upper-breakpoint: map-get($breakpoints, $upper);
+
+        @media (min-width: $lower-breakpoint) and (max-width: $upper-breakpoint) {
+            @content;
+        }
+    }
+    @else {
+        @media (min-width: $lower) and (max-width: $upper) {
+            @content;
+        }
+    }
+}
+
+@mixin flex ($direc: column, $text-align: center, $justify: center){
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: $direc;
+            flex-direction: $direc;
+    text-align: $text-align;
+    -webkit-box-pack: $justify;
+        -ms-flex-pack: $justify;
+            justify-content: $justify;
+}
+
+@mixin text_ellipsis($number) {
+    display: -webkit-box;
+    -webkit-line-clamp: $number;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

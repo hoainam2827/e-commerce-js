@@ -1,0 +1,94 @@
+#address{
+    .title{
+        background: url(../assets/img/titleleft-dark.png) no-repeat left bottom;
+    }
+
+    h3{
+        color: $black;
+        font-size: 1rem;
+        font-weight: 400;
+        padding-bottom: 1rem;
+        text-transform: uppercase;
+        @include respond(tablet-lg, down){
+            margin-top: 2rem;
+        }
+    }
+
+    .text-right, .text-left{
+        a{
+            border-bottom: 1px solid $blue;
+            color: $blue;
+            display: inline-block;
+            margin-bottom: 2rem;
+
+            &:hover{
+                border-bottom: 1px solid $primary-color;
+                color: $primary-color;
+                transition: all 0.3s;
+            }
+        }
+    }
+
+    .text-left{
+        a{
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .address-customer{
+        border-bottom: 1px solid $light-gray;
+
+        .address-form{
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            label{
+                display: block;
+                width: 100%;
+            }
+    
+            .form-text{
+                border: 1px solid $gray;
+                outline: none;
+                padding: 0.2rem 0.5rem;
+                margin: 0 0 15px;
+                width: 100%;
+            }
+
+            span{
+                margin: 0 0 1rem;
+                padding: 0.2rem 0.5rem;
+                width: 100%;
+            }
+        }
+    
+        .form-check{
+            padding-left: 0;
+    
+            label{
+                margin: 0 0 1.5rem;
+            }
+        }
+
+        .btn-address{
+            background-color: $blue;
+            margin-right: 0.3rem;
+            margin-bottom: 2rem;
+
+            &:hover{
+                background-color: $primary-color;
+                transition: all 0.3s;
+            }
+        }
+
+        .show-info{
+            margin: 0.7rem 0;
+        }
+
+        .show-info-content{
+            padding: 0 !important;
+        }
+    }
+}

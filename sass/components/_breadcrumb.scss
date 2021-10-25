@@ -1,0 +1,16 @@
+.breadcrumb{
+    background-color: $white;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    padding: 2rem 0;
+    
+    .breadcrumb-item{
+        a{
+            color: $dark-gray;
+        }
+    }
+
+    .active{
+        color: $primary-color;
+    }
+}

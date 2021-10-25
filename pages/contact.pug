@@ -1,0 +1,68 @@
+extends ./base/base.pug
+
+block variables
+    - const title = "Liên hệ";
+    - const current = "/contact.html";
+
+    include ./variables/breadcrumb_var.pug
+    include ./components/breadcrumb.pug
+    include ./components/mixin.pug
+
+    -
+        var contact_socials = [
+            {
+                title: 'facebook',
+                icon: 'fab fa-facebook-f'
+            },
+            {
+                title: 'google',
+                icon: 'fab fa-google-plus-g'
+            },
+            {
+                title: 'dribble',
+                icon: 'fab fa-dribbble'
+            },
+            {
+                title: 'linked',
+                icon: 'fab fa-linkedin-in'
+            },
+            {
+                title: 'snapchat',
+                icon: 'fab fa-snapchat-ghost'
+            }
+        ]
+
+block content
+    +breadcrumb(contact_breadcrumb, current)
+    section#contact
+        .container
+            h1.title Liên hệ
+            .row.flex-wrap-reverse
+                .col-lg-8
+                    iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3833.7154990273198!2d108.21780861433679!3d16.080246643414963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3142197998ab34cd%3A0xb6327dfdbb1081ea!2zQ8SDbiBo4buZIEZIb21lIMSQw6AgTuG6tW5n!5e0!3m2!1svi!2s!4v1624007245643!5m2!1svi!2s', width='100%', height='450', style='border:0;', allowfullscreen='', loading='lazy')
+                    form(action="#")
+                        +contact("yourName", "Your Name", "text")
+                        +contact("yourEmail", "Your Email", "mail")
+                        +contact("subject", "Subject", "text")
+                        +contact("textarea", "Your message", "textarea")
+                    .row 
+                        .col-sm-2 
+                        .col-sm-10 
+                            a(href="#").btn-main Gửi 
+                .col-lg-4.contact-right
+                    img(src="../assets/img/logo-light.png" alt="Logo Image")
+                    .contact-info
+                        i.fas.fa-map-marker-alt
+                        span Tầng 4, Tòa nhà Hanoi Group Số 442 Đội Cấn, P. Cống Vị, Q. Ba Đình, Hà Nội
+                        br
+                        i.fas.fa-phone-alt
+                        span (04) 6674 2332
+                        br
+                        i.fas.fa-envelope
+                        span Support@bizweb.vn
+                    div.contact-socials
+                        h3 Follow us
+                        each item in contact_socials
+                            - const { icon }=item
+                            a(href="#")
+                                span(class=`${icon}`)

@@ -1,0 +1,233 @@
+#product-detail{
+    .detail-top{
+        @include respond(tablet, down){
+            -webkit-box-orient: vertical !important;
+            -webkit-box-direction: normal !important;
+                -ms-flex-direction: column !important;
+                    flex-direction: column !important;
+        }
+
+        .product-img{
+            border: 1px solid $gray;
+
+            .main-img{
+                border-left: 1px solid $gray;
+            }
+        }
+
+        .product-info{
+            color: $dark-gray;
+            
+            .title{
+                background: url(../assets/img/titleleft-dark.png) no-repeat left bottom;
+                font-size: 1.8rem;
+                letter-spacing: normal;
+                margin-bottom: 0;
+                padding-top: 0;
+
+                @include respond(tablet, down){
+                    font-size: 1.5rem;
+                    padding-top: 1rem;
+                }
+            }
+
+            .price{
+                color: $primary-color;
+                font-size: 2.3rem;
+                font-weight: 400;
+                margin-bottom: 0;
+                padding: 7px 0;
+                position: relative;
+
+                @include respond(tablet, down){
+                    font-size: 1.5rem;
+
+                    span{
+                        font-size: 10px;
+                    }
+                }
+
+                span{
+                    font-size: 25px;
+                    position: absolute;
+                    padding: 0 5px 0 0;
+                    top: 0;
+
+                    @include respond(tablet, down){
+                        font-size: 12px;
+                        top: 7px;
+                    }
+                }
+            }
+
+            .star{
+                border-top: 1px solid $gray;
+                border-bottom: 1px solid $gray;
+                font-size: 14px;
+                padding: 15px 0;
+
+                i{
+                    padding: 3px 0 0 0;
+                }
+
+                span{
+                    letter-spacing: 1px;
+                    padding: 0 0 0 10px;
+                }
+            }
+
+            h3{
+                font-size: 1.2rem;
+                font-weight: 300;
+                padding: 23px 0 0;
+                text-transform: uppercase;
+            }
+
+            .square{
+                .yellow{
+                    color: $primary-color;
+                }
+
+                .black{
+                    color: $black;
+                }
+
+                .red{
+                    color: $red;
+                }
+
+                i{
+                    cursor: pointer;
+                    font-size: 2rem;
+                    margin-right: 15px;
+                    padding: 7px 0 0;
+                }
+            }
+
+            #size{
+                border: 1px solid $dark-gray;
+                color: $dark-gray;
+                margin-top: 10px;
+                outline: none;
+                padding: 5px;
+                width: 150px;
+            }
+
+            .quantily{
+                margin-top: 18px;
+
+                .choose-number{
+                    margin-right: 1.5rem;
+                    text-align: center;
+                    width: 150px;
+                }
+            }
+
+            .reaction{
+                color: $dark-gray;
+                margin: 21px 0 0 0;
+
+                @include respond(tablet, down){
+                    font-size: 1rem
+                }
+
+                .action{
+                    a{
+                        color: $dark-gray;
+                    }
+
+                    i{
+                        padding-right: 7px;
+                    }
+
+                    i.fa-signal{
+                        color: $primary-color;
+                    }
+
+                    span{
+                        padding-right: 25px;
+                    }
+                }
+            }
+
+            p{
+                font-size: 14px;
+                line-height: 1.65;
+
+                @include respond(tablet, down){
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    
+    
+    .detail-desc{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 5rem 0;
+        position: relative;
+
+        @include respond(tablet-lg, down){
+            -ms-flex-wrap: wrap-reverse;
+                flex-wrap: wrap-reverse;
+        }
+
+        .group-desc{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            position: relative;
+
+            @include respond(tablet-lg, down){
+                padding-top: 2rem;
+                padding-bottom: 12rem;
+            }
+
+            .group-desc-item{
+                .checkbox{
+                    display: none;
+
+                    &:checked ~ { 
+                        label{
+                            background-color: $primary-color;
+                            color: $white;
+                        }
+
+                        .content{
+                            z-index: 1;
+                        }
+                    }
+                }
+
+                label{
+                    letter-spacing: 1px;
+                    left: 0px;
+                    padding: 10px 15px;
+                    text-transform: uppercase;
+                    width: 100%;
+                    word-spacing: 2px;
+
+                    @include respond(phone, down){
+                        font-size: 0.8rem
+                    }
+                }
+
+                .content{
+                    background-color: $white;
+                    font-size: 0.8rem;
+                    left: 0px;
+                    line-height: 1.65;
+                    margin: 1rem 0 0;
+                    position: absolute;
+                    width: 100%;
+
+                    p{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

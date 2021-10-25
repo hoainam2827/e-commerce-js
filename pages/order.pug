@@ -1,0 +1,78 @@
+extends ./base/base.pug
+
+block variables
+    - const title = "Danh sách đơn hàng";
+    - const current = "/order.html";
+
+    include ./variables/breadcrumb_var.pug
+    include ./variables/order_var.pug
+    include ./components/breadcrumb.pug
+
+block content
+    +breadcrumb(order_breadcrumb, current)
+    section#order
+        .container
+            h1.title Đơn hàng
+            .order-main.row
+                .col-lg-9.order-content
+                    .order-top
+                        h2 Danh sách đơn hàng
+                        h3 Trạng thái
+                        ul
+                            each item in state_order
+                                - const {label, count}=item
+                                li
+                                    a(href="#").order-link=label+" ( "+count+" ) "
+                    .order-bottom
+                        table.order-table
+                            colgroup
+                                col(width="7%")
+                                col(width="30%")
+                                col(width="13%")
+                                col(width="7%")
+                                col(width="15%")
+                                col(width="17%")
+                                col(width="11%")
+                            thead
+                                tr
+                                    th STT
+                                    th Mã hóa đơn/Ngày mua hàng
+                                    th Kho nhận hàng
+                                    th Số SP
+                                    th Tổng tiền
+                                    th Tình trạng
+                                    th Thao tác
+                            tbody
+                                each item in order_list
+                                    - const{number, id, date, datetime, warehouse, amount, total, status, action}= item
+                                    tr
+                                        td=number
+                                        td.text-left
+                                            p=id+' - '+date
+                                            span=datetime
+                                        td=warehouse
+                                        td=amount
+                                        td=total
+                                        td=status
+                                        td
+                                            button.order-link=action
+                .col-lg-3
+                    .customer-info
+                        h2 Thông tin khách hàng
+                        .row
+                            .col-lg-12
+                                div.info-item
+                                    span.fas.fa-user
+                                    h3 GiangLe
+                                    p Leanhgiang89@gmail.com
+                            .col-lg-12
+                                div.info-item
+                                    span.fas.fa-map-marker-alt
+                                    p Tòa nhà Hà Nội group 442 Đội Cấn, Ba Đình Hà Nội
+                            .col-lg-12
+                                div.info-item
+                                    span.fas.fa-phone-alt
+                                    p (04) 3786 8904
+                        a(href="#") Chi tiết địa chỉ
+
+            

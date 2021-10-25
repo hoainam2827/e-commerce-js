@@ -1,0 +1,157 @@
+.carousel{
+    .carousel-indicators{
+        bottom: calc(7px + 1vh);
+        li{
+            background-color: $light-gray;
+            border-radius: 1px;
+            cursor: pointer;
+            height: 5px;
+            width: calc( 25px + 1vw );
+
+            &:hover{
+                opacity: 0.8;
+            }
+
+            &.active {
+                background-color: $primary-color;
+              }
+        }
+    }
+
+    .carousel-inner{
+        position: relative;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        min-width: 40px;
+        width: 5%;
+    }
+
+}
+.slider{
+    .carousel-item{
+        max-height: 60vh;
+        .carousel__content{
+            color: rgba(255, 255, 255, 0.8);
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translate(-50%,-50%);
+                -ms-transform: translate(-50%,-50%);
+                    transform: translate(-50%,-50%);
+
+            .carousel-title{
+                font-size: 20vw;
+                font-family: $font-dancing;
+            }
+
+            .carousel-year{
+                font-family: $font-lobster;
+                font-size: 2vw;
+                font-weight: 400;
+                left: 100%;
+                position: absolute;
+                top: 70%;
+            }
+            
+            .carousel-subtitle{
+                font-family: $font-roboto;
+                font-size: 3.5vw;
+                font-weight: 400;
+                position: absolute;
+                right: 50%;
+                top: 30%;
+                text-align: right;
+                -webkit-transform: translate(45%, -70%);
+                    -ms-transform: translate(45%, -70%);
+                        transform: translate(45%, -70%);
+                width: 100%;
+            }
+        }
+    }
+}
+
+.owl-carousel{
+    .owl-prev, .owl-next{
+        font-size: 4.3rem !important;
+        left: -3%;
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+        outline: none;
+        z-index: 10;
+
+        &:hover{
+            background-color: transparent !important;
+            color: $primary-color !important;
+            -webkit-transition: all 0.3s !important;
+            -o-transition: all 0.3s !important;
+            transition: all 0.3s !important;
+        }
+    }
+
+    .owl-next{
+        left: 100%;
+    }
+
+    .new_product_item{
+        .new_product_name{
+            color: $black;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        &:hover .new_product_name{
+            color: $primary-color;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        &:hover .btn-main{
+            background-color: $primary-color;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .price{
+            color: $primary-color;
+            font-size: 1.2rem;
+            position: relative;
+
+            span{
+                font-size: 13px;
+                position: absolute;
+                padding: 0 5px 0 0;
+                top: 0;
+            }
+        }
+
+        span{
+            padding: 0 5px 0 10px;
+        }
+
+        .old-price{
+            font-size: 0.8rem;
+            position: relative;
+            text-decoration: line-through;
+
+            span{
+                font-size: 13px;
+                position: absolute;
+                padding: 0 5px 0 0;
+                top: -2px;
+            }
+        }
+    }
+}

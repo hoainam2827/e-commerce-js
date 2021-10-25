@@ -1,0 +1,11 @@
+mixin breadcrumb(array, current)
+    .container
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                each item in array
+                    - const {page, link} = item;
+                    if current != link
+                        li.breadcrumb-item
+                            a(href="" + link)= page
+                    else
+                        li.breadcrumb-item.active(aria-current='page')= page

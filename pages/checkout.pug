@@ -1,0 +1,120 @@
+extends ./base/base.pug
+
+block variables
+    - const title = "Checkout";
+    - const current = "/checkout.html";
+
+    include ./variables/breadcrumb_var.pug
+    include ./variables/address_var.pug
+    include ./components/breadcrumb.pug
+
+block content
+    +breadcrumb(checkout_breadcrumb, current)
+    section#checkout
+        .container
+            .text-left
+                h1.title Check out
+            .row
+                .col-lg-8.col-md-12
+                    form.login-form#form-1
+                        h3 ĐỊA CHỈ NHẬN HÀNG
+                        .input-area
+                            .form-group
+                                label(for="name") Họ &amp; tên đệm
+                                    span *
+                                input#name(name="name" type="text")
+                            span.form-message
+                        .input-area
+                            .form-group
+                                label(for="lastname") Tên
+                                    span *
+                                input#lastname(name="lastname" type="text")
+                            span.form-message
+                        .input-area
+                            .form-group
+                                label(for="address") Địa chỉ
+                                    span *
+                                input#address(name="address" type="text")
+                            span.form-message
+                        .input-area
+                            .form-group
+                                label(for="phone") Phone
+                                    span *
+                                input#phone(name="phone" type="tel")
+                            span.form-message
+                        .input-area
+                            .form-group
+                                label(for="email") Email
+                                    span *
+                                input#email(name="email" type="email")
+                            span.form-message
+                        .input-area.form-options
+                            .form-group
+                                .row
+                                    .form-element.col-lg-6
+                                        label.custom-control PayPal
+                                        input(type="radio" name="payment_type" value="paypal")
+
+                                    .form-element.col-lg-6
+                                        label.custom-control Cash
+                                        input(type="radio" name="payment_type" value="cash")
+                            span.form-message
+                        button.btn-main(type='submit') XÁC NHẬN
+                .col-lg-4.col-md-12
+                    .bill
+                        h4.bill-cart-heading
+                            | Your Cart
+                        ul.cart-list-item
+                            //- li.cart-item
+                                //- img.cart-item-img(src='./assets/img/1.jpg', alt='')
+                                //- .bill-cart-info.cart-info
+                                //-     .cart-info-text
+                                //-         h5.cart-info-name Perfect Pasta
+                                //-         span.cart-info-quantily 1
+                                //-         span.cart-info-x x
+                                //-         span.cart-info-price $40
+                                //-     span.cart-info-price $40
+                                    //- .cart-info-remove
+                                    //-     i.fas.fa-times
+                        .bill__sumary
+                            //- .row.mg-bottom.justify-content-end.flex-nowrap
+                            //-     .col-lg-7.bill-text
+                            //-         | Order total:
+                            //-     .col-lg-5
+                            //-         span.bill__sumary-product $120.00
+                            //- .row.justify-content-end.flex-nowrap
+                            //-     .col-lg-7.bill-text
+                            //-         | Devliery:
+                            //-     .col-lg-5
+                            //-         span.bill__sumary-product $3.99
+                            //- hr
+                            //- .row.justify-content-end.flex-nowrap
+                            //-     .col-lg-7.bill-text
+                            //-         | Total:
+                            //-     .col-lg-5
+                            //-         span.bill__sumary-product $123.99
+    section#successPurchare
+block scripts
+    script(src='js/checkout.js')
+    script(src="js/addToCart.js")
+    script(src='js/validator.js')
+    script.
+        Validator({
+            form: '#form-1',
+            errorSelector: '.form-message',
+            formGroupSelector: '.input-area',
+            rules: [
+                Validator.isRequired('#name'),
+                Validator.isRequired('#lastname'),
+                Validator.isRequired('#address'),
+                Validator.isPhone('#phone'),
+                Validator.isEmail('#email'),
+                Validator.isRequired('input[name="payment_type"]'),
+            ],
+            onSubmit: function (data){
+                saveBill(data);
+                successPurchare();
+                toast(title= 'Thêm thành công!!!', message = 'Thêm vào giỏ hàng thành công');
+                //- window.location.href = "http://localhost:3001/product.html";
+            }
+        });

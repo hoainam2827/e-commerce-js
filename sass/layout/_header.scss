@@ -1,0 +1,226 @@
+.header{
+    .header-top{
+        .container{
+            padding: 0.5rem 0;
+        }
+
+        .header-top-left{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            @include flex(row);
+            margin-bottom: 0;
+
+            .header-top-item{
+                &:not(:last-of-type)::after {
+                    content: "-";
+                }
+
+                @include respond(desktop, down){
+                    &:not(:nth-last-of-type(-n + 2)) {
+                        display: none;
+                      }
+                }
+
+                a {
+                    color: $dark-gray;
+                    font-size: 0.85rem;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    margin: 0 0.5rem;
+                }
+
+                &:first-of-type{
+                    a{
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+        .header-top-right{
+            margin-left: auto;
+
+            .input-area{
+                position: relative;
+                width: 180px;
+                input{
+                    border-radius: 5px;
+                    border: 1px solid $light-gray;
+                    font-style: italic;
+                    font-size: 0.8rem;
+                    padding: 0.2rem 1.5rem 0.2rem 0.7rem;
+                    width: 100%;
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                span{
+                    color: $dark-gray;
+                    font-size: 0.9rem;
+                    position: absolute;
+                    right: 10px;
+                    @include tranformCenter('top');
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+    .header-main{
+        background-color: $black;
+        position: relative;
+        nav{
+            position: relative;
+            .logo img{
+                height: 100px;
+                width: 100px;
+            }
+
+            button {
+                border: 2px solid $primary-color;
+                color: $primary-color;
+                font-size: 1.3rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .navbar-collapse {
+                ul{
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    li{
+                        letter-spacing: 1.5px;
+                        margin: 5px;
+                        .main_items{
+                            -webkit-box-align: center;
+                                -ms-flex-align: center;
+                                    align-items: center;
+                            color: white;
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            font-size: 0.8rem;
+                            font-weight: 500;
+                            -webkit-box-pack: center;
+                                -ms-flex-pack: center;
+                                    justify-content: center;
+                            letter-spacing: 2px;
+                            padding: 0 0 0 15px;
+                            position: relative;
+                            text-transform: uppercase;
+                        }
+
+                        .active{
+                            color:$primary-color
+                        }
+
+                        @include respond(tablet-lg, down){
+                            .main_items{
+                                font-size: 1rem;
+                                -webkit-box-pack: start;
+                                    -ms-flex-pack: start;
+                                        justify-content: start;
+                                padding: 5px 0;
+                            }
+
+                            .active{
+                                border-bottom: 1px solid $primary-color;
+                            }
+                        }
+
+                        ul.mega_menu_list{
+                            border: 2px solid $primary-color;
+                            background-color: $white;
+                            display: none;
+                            left: 8%;
+                            position: absolute;
+                            padding: 1.5rem;
+                            top: 116px;
+                            width: 1000px;
+                            z-index: 10000;
+                            li{
+                                display: -webkit-box;
+                                display: -ms-flexbox;
+                                display: flex;
+                                -webkit-box-orient: vertical;
+                                -webkit-box-direction: normal;
+                                    -ms-flex-direction: column;
+                                        flex-direction: column;
+                                width: 25%;
+                                h3 {
+                                    font-weight: 600;
+                                    font-size: 1rem;
+                                    text-transform: uppercase;
+                                }
+
+                                a{
+                                    color: $dark-gray;
+                                    font-size: 0.9rem;
+                                    font-weight: 500;
+                                    letter-spacing: 0;
+                                    line-height: 2;
+                                    text-transform: capitalize;
+                                    &:hover{
+                                        color: $primary-color;
+                                        -webkit-transition: all 0.3s;
+                                        -o-transition: all 0.3s;
+                                        transition: all 0.3s;
+                                    }
+                                }
+                            }
+                        }
+                        &:hover .mega_menu_list {
+                            display: -webkit-box;
+                            display: -ms-flexbox;
+                            display: flex;
+                            @include respond(tablet-lg, down){
+                                display: none;
+                            }
+                        }
+
+                        .sub_img {
+                            width: 40%;
+                            img {
+                                max-height: 200px;
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .sub_menu_content{
+                        &:hover{
+                            > a{
+                                color: $primary-color;
+                                &:before {
+                                    background-color: transparent;
+                                    content: '';
+                                    height: 50px;
+                                    left: 0;
+                                    position: absolute;
+                                    top: 100%;
+                                    width: 100%;
+                                }
+                                
+                                &:after{
+                                    border: 9px solid transparent;
+                                    border-bottom: 9px solid $primary-color;
+                                    content: '';
+                                    left: 50%;
+                                    position: absolute;
+                                    top: 263%;
+                                    opacity: 1;
+                                    visibility: visible;
+                                    @include respond(tablet-lg, down){
+                                        opacity: 0;
+                                        visibility: hidden; 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,123 @@
+extends ./base/base.pug
+
+block variables 
+    - const title = "Danh sách sản phẩm";
+    - const current = "/product.html";
+
+    include ./variables/product_var.pug
+    include ./components/breadcrumb.pug
+
+block content
+    +breadcrumb(product_breadcrumb, current)
+    #toast
+
+    section#product
+        .container
+            .banner
+            .row
+                .col-lg-3
+                    .product-bar
+                        .row
+                            .col-lg-12.col-sm-6
+                                .product-gallery
+                                    .text-left
+                                        h2.title Danh mục sản phẩm
+                                    each item in product_list_bar
+                                        - const { type, items } = item
+                                        h3=type
+                                        ul
+                                            each item in items
+                                                - const {label, amount} = item;
+                                                li(class=`${label === product_list_bar[0].items[3].label ? 'active' : ''}`)
+                                                    a(href="#")=label
+                                                        span=`(${amount})`
+                                                    
+                            .col-lg-12.col-sm-6
+                                .product-compare
+                                    h2.title So sánh sản phẩm
+                                    p Bạn chưa có sản phẩm nào để so sánh
+                                .product-tag
+                                    h2.title Tag sản phẩm
+                                    each item in product_tags_bar
+                                        if item === product_tags_bar[0]
+                                            a(href="#").tag-link.active= item
+                                        else
+                                            a(href="#").tag-link= item
+                                .product-adv
+                                    img(src="./assets/img/ads.jpg", alt="image advertise")
+                .col-lg-9.product-main
+                    .product-header
+                        .product-header-left
+                            label(for='checkbox1').itemPerPage-grid
+                                span.fas.fa-th
+                            label(for='checkbox2').itemPerPage-list
+                                span.fas.fa-list
+                        .product-header-right
+                            ul.pagination
+                                li.page-item
+                                    button.page-prev(href='#')
+                                        i.fas.fa-caret-left
+                                .list-page-item.d-flex
+                                //- - for(var i=1; i<=5 ;i++)
+                                //-     if(i==2)
+                                //-         li.page-item
+                                //-             a(href='#').active= i
+                                //-     else
+                                //-         li.page-item
+                                //-             a(href='#')= i
+                                li.page-item
+                                    button.page-next(href='#')
+                                        i.fas.fa-caret-right
+                    .product-content
+                        input(name="checkbox-group" hidden checked type="radio" id="checkbox1").checkbox1
+                        input(name="checkbox-group" hidden type="radio" id="checkbox2").checkbox2
+                        .product-grid
+                            .row
+                            //-     each item in product_list_items
+                            //-         - const {name, img, price, oldPrice} = item;
+                            //-         .col-md-4.col-sm-6.text-center
+                            //-             .product_grid-img
+                            //-                 img(src="../assets/img/" +img, alt="image item")
+                            //-                 .product-action
+                            //-                     .product-action-item
+                            //-                         span.fas.fa-heart
+                            //-                         | Yêu thích
+                            //-                     .product-action-item
+                            //-                         span.fas.fa-signal
+                            //-                         | So sánh
+                            //-                     .product-action-item
+                            //-                         span.fas.fa-compress-alt
+                            //-             a(href="/product-detail.html") 
+                            //-                 h3.name=name
+                            //-             p.price=price
+                            //-                 span đ
+                            //-             if oldPrice != ''
+                            //-                 span  - 
+                            //-                 p.old-price=oldPrice +'đ'
+                            //-             a(href="#").btn-main Add to cart 
+                        .product-list
+                            //- - for(var i=0; i<4; i++)
+                            //-     - const {name, img, price, desc}=product_list_items[i];
+                            //-     .list-item
+                            //-         .col-md-4
+                            //-             img(src="../assets/img/" +img, alt="image item")
+                            //-         .col-md-8.list-item-content
+                            //-             h3.name=name
+                            //-             p.price=price
+                            //-                 span đ
+                            //-             p.desc=desc
+                            //-             .reaction.d-flex
+                            //-                 .action
+                            //-                     a(href="#").btn-main ADD TO CART
+                            //-                 .action
+                            //-                     a(href="#") 
+                            //-                         i.fas.fa-heart 
+                            //-                         span Yêu Thích
+                            //-                 .action
+                            //-                     a(href="#") 
+                            //-                         i.fas.fa-signal
+                            //-                         span So Sánh
+block scripts
+    script(src="js/product.js")
+    script(src="js/panigation.js")
+    script(src="js/addToCart.js")

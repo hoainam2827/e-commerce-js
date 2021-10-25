@@ -1,0 +1,22 @@
+mixin address(id, name, content)
+    .address-form.row
+        if id != ''
+            label.col-sm-3(for=id)=name
+            .col-sm-9
+                input.form-text(id=id type='text' value=content)
+        else
+            label.col-sm-3.show-info=name
+            .col-sm-9
+                span.show-info-content=content
+
+mixin contact(id, label, type, placeholder)
+    if id != 'textarea'
+        .contact-form.row.align-items-baseline
+            label.col-sm-2(for=id)= label
+            .col-sm-10
+                input(id= id type= type)
+    else
+        .contact-form.row
+            label.col-sm-2(for=id)= label
+            .col-sm-10
+                textarea(id= id rows='5')

@@ -1,0 +1,88 @@
+extends ./base/base.pug
+
+block variables
+    - const title = "Blog detail";
+    - const current = "/blog-detail.html";
+
+    include ./variables/breadcrumb_var.pug
+    include ./variables/blog_var.pug
+    include ./components/breadcrumb.pug
+
+block content
+    +breadcrumb(blog_detail_breadcrumb, current)
+    section#blog-detail
+        .container
+            h1.title Blog
+            .row.blog-detail
+                .col-lg-3.col-md-4
+                    .blog-bar
+                        .blog-new
+                            h2.subtitle Bài viết mới nhất
+                            - for(var i=0; i<3; i++)
+                                - const{title, date, img}= blog_list[i]
+                                .blog-new-item
+                                    .row
+                                        .col-4.pr-0
+                                            .blog-img
+                                                img(src="../assets/img/"+img, alt="blog image")
+                                                i.fas.fa-link
+                                        .col-8.pr-0
+                                            a(href="#")=title
+                                            span.far.fa-calendar=date
+                        .blog-tag
+                            h2.subtitle Blog Tags
+                            each item in blog_tag
+                                if item === blog_tag[0]
+                                    a(href="#").tag-link.active= item
+                                else
+                                    a(href="#").tag-link= item
+                        div.blog-video
+                            h2.subtitle Latest Video
+                .col-lg-9.col-md-8
+                    .blog-detail-content
+                        - const{img, author, date, comments, content} = blog_list[0]
+                        .blog-content-img
+                            img(src="../assets/img/"+img, alt="blog image")
+                        .blog-text
+                            h2.title-blog= blog_list[0].title
+                            p.info-blog= "Đăng bởi " +author + " | " + date + " | " + comments.length + " bình luận"
+                            p.content-blog= content
+                            form.feedback
+                                h3.title-blog Đóng góp ý kiến
+                                div.input-group
+                                    label(for="name") Tên
+                                        span *
+                                    input.feedback-name(type="text", name="name")
+                                div.input-group
+                                    label(for="email") Email
+                                        span *
+                                    input.feedback-email(type="email", name="email")
+                                div.input-group
+                                    label(for="comment") Ý kiến
+                                        span *
+                                    textarea.feedback-comment(name="comment", rows="10")
+                                button.btn-main Gửi ý kiến
+                            .blog-comment
+                                h2= "Bình luận " + "(" +comments.length+ ")"
+                                each item in comments
+                                    - const {name, time, comment } = item
+                                    .comment-item
+                                        .comment-info
+                                            h3.cmt-name= "Bình luận bởi "+name
+                                            h3.cmt-time= "Cách đây "+time+ " giờ"
+                                        button.btn-blog Trả lời
+                                    .comment-content= comment
+                            ul.pagination
+                                li.page-item
+                                    a.page-prev(href='#')
+                                        i.fas.fa-caret-left
+                                - for(var i=1; i<=3 ;i++)
+                                    if(i==1)
+                                        li.page-item
+                                            a(href='#').active= i
+                                    else
+                                        li.page-item
+                                            a(href='#')= i
+                                li.page-item
+                                    a.page-prev(href='#')
+                                        i.fas.fa-caret-right

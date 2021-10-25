@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lobster&family=Roboto+Slab:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+$error-mess: #f33a58;
+$white: #ffffff;
+$black: #000000;
+$gray: #e6e6e6;
+$light-gray: #eeeeee;
+$dark-gray: #818181;
+$green: #5c911c;
+$orange: #ec7429;
+$red: #c30100;
+$primary-color: #e3ab39;
+$blue: #44C7DC;
+$font-dancing: 'Dancing Script', sans-serif;
+$font-lobster: 'Lobster', sans-serif;
+$font-roboto: 'Roboto Slab', sans-serif;
+$breakpoints: (
+    phone: 576px,
+    tablet: 767px,
+    tablet-lg: 991px,
+    desktop: 1200px
+);
+
+body {
+  font-family: "Roboto Slab", sans-serif;
+}
+
+a{
+  text-decoration: none !important;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+li {
+  list-style: none;
+}
+
+.title{
+  background: url(../assets/img/title-dark.png) no-repeat center bottom;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  padding: 20px 0;
+  text-transform: uppercase;
+}
+
+  

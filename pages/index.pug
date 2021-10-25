@@ -1,0 +1,100 @@
+extends ./base/base.pug
+
+block variables
+    - const title = "Trang chủ"
+    - const current = "/"
+
+    include ./variables/index_variables.pug
+    include ./components/carousel.pug
+block content
+    section#popup
+        input#login-popup(type='checkbox')
+        .popup
+            label.transparent-label(for='login-popup')
+            label.popup-close-btn(for='login-popup') Close
+            .popup-inner.row.text-center
+                .popup-img.col-lg-4.col-sm-4
+                    img(src="../assets/img/1.jpg", alt="popup image")
+                .popup-content.col-lg-8.col-sm-8
+                    h2.popup-title Gửi Email
+                    p Đắng ký email ngay hôm nay để nhận được thông tin về các sự kiện, các chương trình giảm giá sớm nhất.
+                    form
+                        input(type='email', placeholder='Email của bạn').popup-email
+                        button.btn-main.btn-popup Gửi email
+    section#introduce
+        .introduce-content.col-lg-6.col-md-8.text-center
+            h2.title Giới thiệu
+            p Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta laboriosam aperiam ipsam sit, obcaecati neque dolores. Ipsam unde tenetur numquam esse, facilis veritatis nobis nemo, totam, voluptates expedita sapiente id!
+            a.btn-main Xem thêm
+    section#discount-product
+        .container
+            .discount-product__bg
+                .discount-product__item.d-flex
+                    .col-lg-7
+                        .discount-product__img
+                            img(src="./assets/img/14.jpg", alt="discount")
+                    .col-lg-5
+                        .discount-product__content
+                            h3.title Rượu nho năm 1987
+                            p.price 330.000
+                                span đ
+                        a.btn-main(href="#") Add to cart
+                        p.discount-product__desc Một hợp chất có trong rượu vang gọi là resverato có khả năng làm tăng tối đa tuổi thọ. Resverato còn có khả năng ngăn chặn mật độ oxy hóa của protein béo.
+                        .discount-product__time.d-flex.row
+                            .col-6.text-center.time-item
+                                h3 334
+                                p Ngày
+                            .col-6.text-center.time-item
+                                h3 26
+                                p Giờ
+                            .col-6.text-center.time-item
+                                h3 60
+                                p Phút
+                            .col-6.text-center.time-item
+                                h3 15
+                                p Giây
+    section#new-products.container
+        .text-center 
+            h2.title Sản phẩm mới
+        +new_product(new_product)
+    section#list-products
+        .container-fluid
+            .row
+                each item in list_products
+                    - const { title, year, img } = item
+                    .col-lg-3.col-md-4.col-sm-6.p-0
+                        .list-products-item
+                            .list_products-img(style="background-image: url(./assets/img/"+img+")")
+                                .list-products-content
+                                    span=year
+                                    h2=title
+    section#selling-products.container 
+        .text-center 
+            h2.title Sản phẩm bán chạy
+        +new_product(selling_product)
+    section#content-bottom
+        .container
+            .row
+                .col-lg-8.col-md-6
+                    .text-center
+                        h2.title TIN TỨC &amp; BLOG
+                    .row
+                        each blog_item in index_blog
+                            - const {img, title, author, date, comment, content} = blog_item;
+                            .blog_items.col-lg-6
+                                .blog-img
+                                    img(src="../assets/img/" + img, alt="image")
+                                    i.fas.fa-link
+                                .blog-content
+                                    a(href="/blog-detail.html").title-blog= title
+                                    p.info-blog= "Đăng bởi " +author + " | " + date + " | " + comment + " bình luận"
+                                    p.content-blog= content
+                                    a(href="#").read-more Read more 
+                .col-lg-4.col-md-6
+                    .text-center
+                        h2.title KHÁCH HÀNG
+                    .customer.d-flex.text-center.justify-content-center
+                        span "
+                        p.customer-content Vang nổ Thăng Long có hương vị đặc trưng của sản phẩm lên men tự nhiên  từ hoa quả với độ rượu nhẹ, bọt ga đầy trắng mịn, Vang nổ đỏ Thăng Long...
+                        a(href="#") Read more
+                        +carousel-customer()

@@ -1,0 +1,102 @@
+#blog{
+    .title{
+        background: url(../assets/img/titleleft-dark.png) no-repeat left bottom;
+    }
+
+    .blog{
+        margin-bottom: 4rem;
+
+        .blog-img{
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+
+            &::after{
+                background-color: rgba(255, 255, 255, 0.5);
+                content: '';
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+                height: 101%;
+                left: 0;
+                opacity: 0;
+                position: absolute;
+                top: -1px;
+                transition: clip-path 0.3s ease-in, opacity 0.3s linear,z-index 0.7s;
+                width: 101%;
+                z-index: -1;
+            }
+
+            &:hover::after{
+                background-color: rgba(255, 255, 255, 0.5);
+                content: '';
+                clip-path: polygon(60% 40%, 100% 0, 100% 100%, -0.5% 100%);
+                opacity: 1;
+                position: absolute;
+                transition: clip-path 0.3s ease-in;
+                z-index: 1;
+            }
+
+            i{
+                background-color: $white;
+                border-radius: 50%;
+                color: $dark-gray;
+                font-size: 20px;
+                left: 0%;
+                opacity: 0;
+                position: absolute;
+                padding: 0.7rem;
+                top: 0%;
+                transition: all 0.3s ease-in;
+                z-index: 100;
+
+                &:hover{
+                    background-color: $primary-color;
+                }
+            }
+
+            &:hover{
+                i{
+                    opacity: 1;
+                    transition: all 0.3s ease-in;
+                    @include tranformCenter('both');
+                }
+            }
+        }
+
+        .blog-content{
+            .title-blog{
+                color: $black;
+                display: inline-block;
+                font-size: 1.1rem;
+                font-weight: 500;
+                letter-spacing: 1px;
+                padding-top: 0.9rem;
+                text-transform: uppercase;
+                transition: all 0.2s;
+
+                &:hover{
+                    color: $primary-color;
+                    transition: all 0.2s;
+                }
+            }
+
+            .info-blog{
+                color: $dark-gray;
+                font-size: 0.9rem;
+                margin: 0.5rem 0;
+            }
+
+            .content-blog{
+                font-size: 0.9rem;
+                margin-bottom: 0.3rem;
+                @include text_ellipsis(4);
+            }
+
+            .read-more{
+                color: $primary-color;
+                display: inline-block;
+                margin-bottom: 1rem;
+                padding-bottom: 1rem;
+            }
+        }
+    }
+}

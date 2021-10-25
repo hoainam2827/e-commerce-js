@@ -1,0 +1,62 @@
+extends ./base/base.pug
+
+block variables 
+    - const title = "Giỏ hàng";
+    - const current = "./cart.html";
+
+    include ./variables/product_var.pug
+    include ./variables/breadcrumb_var.pug
+    include ./components/breadcrumb.pug
+
+block content
+    +breadcrumb(cart_breadcrumb, current)
+    #toast
+    section#cart
+        .container
+            .text-left
+                h2.title Giỏ hàng
+                .cart-content
+                    table.cart-table
+                        colgroup
+                            col(width='15%')
+                            col(width='30%')
+                            col(width='15%')
+                            col(width='20%')
+                            col(width='15%')
+                            col(width='5%')
+                        thead
+                            tr
+                                th Ảnh
+                                th Tên sản phẩm
+                                th Giá
+                                th Số lượng
+                                th Tổng số
+                                th Xóa
+                        tbody
+                    //-         - for(var i=0; i<=4; i++)
+                    //-             - const{ name, img, price }= product_list_items[i]
+                    //-             tr
+                    //-                 td.cart-img
+                    //-                     img(src="../assets/img/" +img, alt="cart img")
+                    //-                 td.cart-name=name
+                    //-                 td.cart-price
+                    //-                     p.price=price
+                    //-                             span đ
+                    //-                 td.cart-quantity
+                    //-                     input(type="text" value='1')
+                    //-                 td.cart-total
+                    //-                     p.price=price
+                    //-                             span đ
+                    //-                 td.cart-cancer
+                    //-                     i.far.fa-trash-alt
+                    .text-right.cart-action
+                        a(href="./product.html").btn-main Tiếp tục mua hàng
+                        a(href="http://localhost:3001/checkout.html").btn-main checkout
+    section#cartEmpty
+block scripts
+    script(src="js/addToCart.js")
+    script(src="js/controlCart.js")
+    script.
+        ;(() => {
+            displayCart();
+        })();
